@@ -1,0 +1,17 @@
+:host {
+  @apply flex flex-col flex-1;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+@media (pointer: none), (pointer: coarse) {
+  .layout {
+    position: fixed;
+    height: 100%;
+  }
+}
+
+.app-main-content {
+  @apply h-full;
+  @apply flex flex-1 md:flex-initial md:self-center md:w-full overflow-hidden;
+}

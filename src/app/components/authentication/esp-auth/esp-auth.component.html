@@ -1,0 +1,56 @@
+
+<app-header></app-header>
+
+
+
+
+<div class="container max-w-3xl">
+    <!-- ... -->
+  
+<div class="content p-4 text-justify  bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+  <!-- <img  class="h-auto max-w-lg" src="assets/orange-yellow-vector.svg" alt="Digio logo"> -->
+
+  
+  <div
+  class="flex flex-col text-xxs items-start justify-center"
+>
+  <div>
+    <span>{{ txnInfo.signDate }}</span> &nbsp;
+    <span>{{ txnInfo.signTime }}</span>
+  </div>
+  <div>
+    <span>ASP:&nbsp;</span><span>{{ txnInfo.aspName }}</span>
+  </div>
+  <div>
+    <span>TID:&nbsp;</span><span>{{ txnInfo.aspTxnId }}</span>
+  </div>
+ 
+</div>
+<!-- <div class="overflow-y-auto">gsf</div> -->
+  <!-- <app-checkbox
+  *ngIf="idEnter && !primaryButton.loadingText"
+  (change)="checkChange()"
+  class="w-full my-2"
+>
+  <span class="text-xs">{{
+    EspConstants.CONSENT | translate
+  }}</span>
+</app-checkbox> -->
+    <app-adhaar-input  class="w-44"
+          [hiddenInput]="true"
+          [inputLabel]="EspConstants.AADHAAR_VID_LABEL"
+          [inputDescription]="EspConstants.OTP_MESSAGE"
+          [inputErrorDescription]="EspConstants.INVALID_AADHAAR_VID"
+          (text)="setAadhaarInput($event)">
+
+    </app-adhaar-input>
+    <app-button></app-button>
+   
+
+        <app-accordion></app-accordion>
+
+
+</div>
+</div>
+
+<app-footer></app-footer>

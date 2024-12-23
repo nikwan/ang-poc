@@ -1,0 +1,47 @@
+<header
+  class="app-header  sm:py-3 px-3.5 md:px-14"
+>
+  <div
+    class="h-full w-full flex items-center justify-between"
+  >
+    <div class="flex justify-center items-center">
+      <!-- Corporate logo -->
+      <img
+        #logoImage
+        class="header-logo h-10 sm:h-12"
+        [src]="logoUrl ? logoUrl : 'assets/protean_logo.svg'"
+        alt="Digio Logo"
+      />
+    </div>
+
+
+      
+    <div class="flex flex-row items-center text-xxs md:text-xs p-1 md:gap-0.5">
+      <!-- ASP (Digio) logo -->
+      <img class="w-10 md:w-14" src="assets/protean_logo.svg" alt="Digio logo">
+     
+    </div> 
+    
+   
+    <div
+      class="flex justify-center items-center float-right"
+    >
+      <!-- <div class="border flex flex-row gap-1 rounded-md p-1 border-[#ADC6FF] bg-[#F4F6FF80] text-[#46464A]">
+       
+        <select *ngIf="showLanguageChange" [(ngModel)]="locale" (ngModelChange)="setLanguage()"
+          class="outline-none text-xs bg-transparent">
+          <option *ngFor="let lang of availableLanguages" [value]="lang.value">{{ lang.label }}</option>
+        </select>
+      </div> -->
+      
+      <div class="flex flex-row items-center text-xxs md:text-xs p-1 md:gap-0.5">
+        <!-- ASP (Digio) logo -->
+        <img class="w-10 md:w-14" src="assets/protean_logo.svg" alt="Digio logo">
+       
+      </div>
+
+
+     
+    </div>
+  </div>
+</header>
