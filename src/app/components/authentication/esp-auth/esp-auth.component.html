@@ -1,0 +1,138 @@
+<app-header></app-header>
+
+<div class="container max-w-2xl sm:my-4 flex flex-col">
+  <!-- Flex Card Content Here -->
+  <div class="content text-justify bg-[#F7F8FF] rounded-lg shadow" >
+    
+    <!-- Transaction Info Section (Not Showing OTP yet) -->
+    
+      <div class="border-b border-dashed border-gray-300 flex flex-row items-start justify-between px-2 py-1.5 w-full">
+        <div class="flex flex-col text-xxs items-start justify-start">
+          <div>
+            <span>{{ txnInfo.signDate }}</span> &nbsp;
+            <span>{{ txnInfo.signTime }}</span>
+          </div>
+          <div>
+            <span>ASP:&nbsp;</span><span>{{ txnInfo.aspName }}</span>
+          </div>
+          <div>
+            <span>TID:&nbsp;</span><span>{{ txnInfo.aspTxnId }}</span>
+          </div>
+        </div>
+        
+        <div class="h-8 rounded-mdp-1 grid grid-cols-2 gap-4">
+          <!-- ESP logo -->
+          <img class="h-full" src="assets/protean_logo.svg" alt="Esp logo"/>
+          <img class="h-full" src="assets/protean_logo.svg" alt="Esp logo"/>
+        </div>
+      </div>
+      <div *ngIf="!otpEnter">
+      <!-- Accordion Section (additional details) -->
+      <app-accordion></app-accordion>
+
+      <!-- Aadhaar Input Section -->
+      <app-adhaar-input class="w-33"
+        [hiddenInput]="true"
+        [inputLabel]="EspConstants.AADHAAR_VID_LABEL"
+        [inputDescription]="EspConstants.OTP_MESSAGE"
+        [inputErrorDescription]="EspConstants.INVALID_AADHAAR_VID"
+        (text)="setAadhaarInput($event)">
+      </app-adhaar-input>
+
+      <!-- Consent Checkbox and Action Buttons -->
+      <div class="bg-white px-5 py-2 flex-col items-center justify-center sm:rounded-b-2xl w-full border-t-2 border-gray-100 hidden xs:flex">
+        <app-checkbox *ngIf="!otpEnter && !primaryButton.loadingText" (change)="checkChange()" class="w-full my-2">
+          <span class="text-xs">{{ EspConstants.CONSENT | translate }}</span>
+        </app-checkbox>
+        <div #errorHolder class="h-5 text-xs text-error"></div>
+        <div class="w-full flex flex-row gap-2">
+          <app-button (click)="showConfirmationModal()"
+            [loading]="false"
+            [type]="'secondary'"
+            [disabled]="primaryButton.loadingText !== undefined"
+            [text]="EspConstants.CANCEL"
+            class="w-4/10">
+          </app-button>
+          <app-button #primaryButton (click)="submitAction()" class="flex-1"
+            [loading]="false"
+            [type]="'primary'"
+            [disabled]="!(checked && (id.length === 12 || id.length === 16))"
+            [text]="EspConstants.GET_OTP">
+          </app-button>
+        </div>
+      </div>
+    </div>
+    
+
+
+    <!-- OTP Input Section (Shows when otpEnter is true) -->
+    <div *ngIf="otpEnter">
+      <div class="p-4 rounded-lg">
+        <app-otp-input (otpChange)="handleOtpChange($event)"></app-otp-input>
+      </div>
+  <br>
+
+  <div class="bg-white px-5 py-3 flex-col items-center justify-center sm:rounded-b-2xl w-full border-t-2 border-gray-100 hidden xs:flex">
+        <div #errorHolder class="h-5 text-xs text-error"></div>
+        <div class="w-full flex flex-row gap-2">
+          <app-button (click)="showConfirmationModal()"
+            [loading]="false"
+            [type]="'secondary'"
+            [disabled]="primaryButton.loadingText !== undefined"
+            [text]="EspConstants.CANCEL"
+            class="w-4/10">
+          </app-button>
+          <app-button #primaryButton (click)="submitAction()" class="flex-1"
+            [loading]="false"
+            [type]="'primary'"
+            [disabled]="!(checked && (id.length === 12 || id.length === 16))"
+            [text]="EspConstants.VERIFY">
+          </app-button>
+        </div>
+      </div>
+    </div>
+    <!-- <app-footer></app-footer> -->
+  </div><br>
+
+</div>
+
+
+
+<div *ngIf="openConfirmationModal" class="modal-overlay">
+  <div
+    *ngIf="!redirectingBackToDigio"
+    class="modal min-w-80 flex flex-col gap-6 h-32"
+  >
+    <span class="text-md">{{
+      EspConstants.CONFIRMATION | translate
+    }}</span>
+    <div class="w-full flex flex-row items-end justify-end gap-2">
+      <app-button
+        (click)="closeProcessAndRedirectToASP()"
+        [loading]="false"
+        [type]="'secondary'"
+        [disabled]="false"
+        [loading]="false"
+        [text]="EspConstants.YES"
+      ></app-button>
+      <app-button
+        (click)="hideConfirmationModal()"
+        [loading]="false"
+        [type]="'primary'"
+        [disabled]="false"
+        [text]="EspConstants.NO"
+      ></app-button>
+    </div>
+  </div>
+  <div
+    *ngIf="redirectingBackToDigio"
+    class="modal min-w-80 h-32 flex items-center justify-center"
+  >
+    <!-- <app-loader>{{ EspConstants.REDIRECTING | translate }} </app-loader> -->
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>
+

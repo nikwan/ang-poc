@@ -1,0 +1,65 @@
+
+  /* General input field styles */
+  .otp-input {
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b; /* Slate-900 */
+    background-color: #ffff; /* Slate-100 */
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  /* Focus and Hover States */
+  .otp-input:focus {
+    background-color: #ffffff; /* White background */
+    border-color: #005BC1; /* Indigo-400 */
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25); /* Indigo focus ring */
+  }
+
+  .otp-input:hover {
+    border-color: #e5e7eb; /* Light hover border */
+  }
+
+  /* Button Styling */
+  .submit-button {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.625rem 1.5rem;
+    background-color: #005BC1; /* Indigo-500 */
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(99, 102, 241, 0.1); /* Shadow */
+  }
+
+  .submit-button:hover {
+    background-color: #005BC1; /* Indigo-600 */
+  }
+
+  /* Error state for input fields */
+  .otp-input.error {
+    border-color: #ef4444; /* Red border */
+    background-color: #fee2e2; /* Red background */
+  }
+
+  /* Small text with link */
+  .resend-link {
+    font-size: 0.875rem;
+    color: #0b45b8; /* Slate-500 */
+    text-decoration: none;
+  }
+
+  .resend-link:hover {
+    color: #68a3e6; /* Indigo-500 */
+  }
+
+

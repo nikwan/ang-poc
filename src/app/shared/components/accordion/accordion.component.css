@@ -1,0 +1,48 @@
+/* Accordion Header */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Active Accordion Item */
+  .accordion-header.active {
+  
+    color: #1f2937; /* Dark text color for active state */
+  }
+  
+  .accordion-header.inactive {
+   
+    color: #f1f2f4; /* Lighter text color for inactive state */
+  }
+  
+
+  .accordion-body {
+    display: none;
+    
+   
+    transition: max-height 0.3s ease;
+  }
+  
+  /* Expanded Body */
+  .accordion-body.expanded {
+    display: block;
+    max-height: 500px; /* Adjust max-height for smooth transition */
+  }
+  
+  .accordion-body.collapsed {
+    display: none;
+    max-height: 0;
+  }
+  
+  svg {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Rotate SVG when expanded */
+  .accordion-header.active svg {
+    transform: rotate(180deg);
+  }
+  
