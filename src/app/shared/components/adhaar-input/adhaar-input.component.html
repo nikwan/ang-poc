@@ -1,0 +1,45 @@
+<div class="display-style w-full my-2">
+    <div class="form px-2 md:px-4">
+      <input
+        type="text"
+        placeholder="  "
+        class="textbox h-16 text-[#46464A]"
+        [attr.type]="isHidden ? 'password' : 'text'"
+        [attr.maxlength]="16"
+        [(ngModel)]="aadhaarInputValue" (input)="onInputChange()"
+      />
+      <label
+        class="form-label bg-white xxs:bg-[#F7F8FF] top-[34%] md:top-[35%] left-[0.8rem] md:left-[1.2rem] px-1"
+        [ngClass]="{
+          focused: input && input.length > 0
+        }"
+      >
+        {{inputLabel | translate}}
+      </label>
+      <div
+        *ngIf="hiddenInput"
+        class="absolute top-5 right-0 flex items-center pr-3 md:pr-6 mx-2"
+        (click)="hideShowInputValue()"
+      >
+        <img
+          *ngIf="!isHidden"
+          class="md:h-6 cursor-pointer"
+          alt="Show Logo"
+          src="assets/show.svg"
+        />
+        <img
+          *ngIf="isHidden"
+          class="md:h-6 cursor-pointer"
+          alt="Hide Logo"
+          src="assets/hide.svg"
+        />
+      </div>
+      <div
+        class="w-full flex items-center justify-start min-h-4 md:min-h-6 pt-1.5 text-xxs sm:text-xs"
+      >
+        <label *ngIf="!inputError" class="text-left text-[#46464A]">{{inputDescription | translate}}</label>
+        <label *ngIf="inputError" class="text-error text-left">{{inputErrorDescription | translate}}</label>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,52 @@
+.display-style {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+  
+.form {
+    width: 100%;
+    position: relative;
+}
+  
+.textbox {
+    width: 100%;
+    border: 1.5px solid #46464A;
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    padding: 14px;
+    background-color: transparent;
+    transition: 0.1s ease;
+}
+
+.textbox:focus {
+    @apply !border-primary;
+}
+  
+.form-label {
+    position: absolute;
+    font-size: 12px;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+    pointer-events: none;
+    outline: none;
+}
+  
+.textbox:focus + .form-label {
+    top: 0;
+    font-size: 14px;
+    transform: translateY(-50%) scale(0.9);
+    @apply text-primary;
+}
+  
+.textbox:not(:placeholder-shown) + .form-label {
+    top: 0;
+    font-size: 13px;
+    transform: translateY(-50%) scale(0.9);
+   
+}
+
+
+  

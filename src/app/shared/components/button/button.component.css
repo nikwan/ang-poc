@@ -1,0 +1,77 @@
+:host{
+    @apply flex items-center justify-center xs:max-w-[80%] text-sm;
+  }
+  .app-button {
+    @apply flex items-center justify-center h-10 py-2 w-full;
+    @apply text-center cursor-pointer disabled:cursor-not-allowed;
+    @apply px-8;
+    @apply rounded-[100px] relative overflow-hidden;
+  }
+  
+  .btn-primary {
+    @apply bg-primary;
+    @apply text-white font-semibold;
+    @apply disabled:bg-primary-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border border-[#74777F];
+    @apply text-primary;
+    @apply disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400 disabled:border-none;
+  }
+  
+  .movingCircle {
+    position: absolute;
+    width: 30%;
+    height: 130%;
+    filter: blur(10px);
+    border-radius: 50%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    animation: moveAround 2s linear infinite;
+  }
+  
+  @keyframes moveAround {
+    0% {
+      top: 0;
+      left: 0;
+    }
+  
+    35% {
+      top: 0;
+      left: 100%;
+    }
+  
+    50% {
+      top: 100%;
+      left: 100%;
+    }
+  
+    85% {
+      top: 100%;
+      left: 0;
+    }
+  }
+  
+  .overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  
+  .button-overlay {
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    right: 2.5px;
+    bottom: 2.5px;
+    border-radius: 100px;
+    pointer-events: none;
+  }

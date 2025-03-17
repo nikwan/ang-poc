@@ -1,0 +1,22 @@
+
+
+
+<button
+  #appbutton
+  class="app-button overflow-hidden"
+  [class.cursor-wait]="loadingText"
+  (click)="!loadingText"
+  [disabled]="disabled"
+>
+  <div *ngIf="!loadingText" class="flex flex-row relative" >
+    {{text | translate}}
+  </div>
+
+  <div *ngIf="loadingText" class="overlay-container">
+    <div class="movingCircle !bg-primary"></div>
+    <div class="button-overlay bg-white"></div>
+    <div class="button-overlay text-sm font-medium text-primary flex items-center justify-center bg-white">
+      {{ actionLoadingMessage | translate }}
+    </div>
+  </div>
+</button>

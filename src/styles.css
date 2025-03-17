@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.cdnfonts.com/css/lato");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    --primary-color: 0, 91, 193;
+    --secondary-color: 255, 255, 255;
+  }
+
+  html {
+    display: flex;
+    flex-direction: column;
+    @apply h-screen w-screen;
+  }
+
+
+  body {
+    @apply h-full w-full m-0 p-0 bg-white font-medium text-[#77767A];
+    font-family: "Lato"; 
+  }
+
+  .content {
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  button {
+    @apply px-8 py-2;
+  }
+}
+
+
